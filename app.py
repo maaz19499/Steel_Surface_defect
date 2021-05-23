@@ -25,7 +25,7 @@ app = Flask(__name__)
 # run_with_ngrok(app)
 
 # Model saved with Keras model.save()
-MODEL_PATH ='/Steel_surface_defect/steel_defect.h5'
+MODEL_PATH ='steel_defect.h5'
 
 # Load your trained model
 model = load_model(MODEL_PATH)
