@@ -36,30 +36,18 @@ model = load_model(MODEL_PATH)
 
 
 def model_predict(file, model):
-    img = Image.load_img(file, target_size=(200, 200))
-    if(len(img.shape)<3):
-            x = image.img_to_array(img)
-            x = np.array(x)
-            x = np.expand_dims(x, axis=0)
-            x = x.astype('float32')/255
-            preds = model.predict(x)
-            preds = np.argmax(preds)
-            labels = ['Crazing','Inclusion','Patches','Pitted','Rolled','Scratches']
-            preds = labels[preds]
-            preds =print("The Metal has {} type of Surface Defect".format(preds))
-            return preds
-    else:  
-        img = tensorflow.image.rgb_to_grayscale(img, name=None)
-        x = image.img_to_array(img)
-        x = np.array(x)
-        x = np.expand_dims(x, axis=0)
-        x = x.astype('float32')/255
-        preds = model.predict(x)
-        preds = np.argmax(preds)
-        labels = ['Crazing','Inclusion','Patches','Pitted','Rolled','Scratches']
-        preds = labels[preds]
-        preds =print("The Metal has {} type of Surface Defect".format(preds))
-        return preds
+     img = image.load_img(file, grayscale = True ,target_size=(200, 200))
+     x = image.img_to_array(img)
+     x = np.array(x)
+     x = np.expand_dims(x, axis=0)
+     x = x.astype('float32')/255
+     preds = model.predict(x)
+     preds = np.argmax(preds)
+     labels = ['Crazing','Inclusion','Patches','Pitted','Rolled','Scratches']
+     preds = labels[preds]
+     preds =print("The Metal has {} type of Surface Defect".format(preds))
+   return preds
+   
    
 
 @app.route('/', methods=['GET'])
