@@ -46,7 +46,7 @@ def model_predict(file, model):
      labels = ['Crazing','Inclusion','Patches','Pitted','Rolled','Scratches']
      preds = labels[preds]
      preds =print("The Metal has {} type of Surface Defect".format(preds))
-   return preds
+     return preds
    
    
 
