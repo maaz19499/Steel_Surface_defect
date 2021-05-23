@@ -13,7 +13,7 @@ import tensorflow
 from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-import PIL
+from PIL import Image
 
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
@@ -36,7 +36,7 @@ model = load_model(MODEL_PATH)
 
 
 def model_predict(file, model):
-    img = image.load_img(file, target_size=(200, 200))
+    img = Image.load_img(file, target_size=(200, 200))
     if(len(img.shape)<3):
             x = image.img_to_array(img)
             x = np.array(x)
