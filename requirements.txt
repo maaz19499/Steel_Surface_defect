@@ -7,5 +7,6 @@ Keras==2.4.3
 Keras-Preprocessing==1.1.2
 sklearn==0.0
 flask==1.1.2
+PIL==1.1.7
 requests==2.23.0
 Werkzeug==1.0.1
