@@ -63,7 +63,7 @@ def upload():
         f = request.files['file']
 
         # Save the file to ./uploads
-        basepath = os.path.basename(__file__)
+        basepath = os.path(__file__)
         file_path = basepath + f.filename
 #         file_path = os.path.join(basepath, 'uploads', secure_filename(f.filename))
 #         f.save(file_path)
