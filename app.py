@@ -36,7 +36,7 @@ model = load_model(MODEL_PATH)
 
 
 def model_predict(file_path, model):
-     img = image.load_img(file_path, color_mode='grayscale' ,target_size=(200, 200))
+     img = image.load_img(file_path,target_size=(200, 200))
      x = image.img_to_array(img)
      x = np.array(x)
      x = np.expand_dims(x, axis=0)
@@ -63,10 +63,9 @@ def upload():
         f = request.files['file']
 
         # Save the file to ./uploads
-        basepath = os.path(__file__)
-        file_path = basepath + f.filename
-#         file_path = os.path.join(basepath, 'uploads', secure_filename(f.filename))
-#         f.save(file_path)
+        basepath = os.path.dirname(__file__)
+        file_path = os.path.join(basepath, 'uploads', secure_filename(f.filename))
+        f.save(file_path)
         # Make prediction
         preds = model_predict(file_path, model)
         result=preds
